@@ -116,7 +116,7 @@ public class FrontController {
         viewProvider.printMessage("Enter replacement cost: ");
         double replacementCost = viewProvider.readDouble();
         viewProvider.printMessage("Choose rating 'G', 'PG', 'PG-13', 'R', 'NC-17': ");
-        Rating rating = Rating.valueOf(viewProvider.readString());
+        Rating rating = Rating.valueOfLabel(viewProvider.readString());
         viewProvider.printMessage("Add special features 'Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes': ");
         String specialFeatures = viewProvider.readString();
         Set<Byte> categoriesId = addCategoriesToFilm();

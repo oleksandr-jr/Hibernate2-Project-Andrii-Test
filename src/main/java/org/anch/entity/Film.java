@@ -2,6 +2,7 @@ package org.anch.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.anch.converter.RatingConverter;
 import org.anch.converter.YearAttributeConverter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
@@ -58,8 +59,11 @@ public class Film {
     @Type(type = "org.hibernate.type.DoubleType")
     private Double replacementCost;
 
-    @Enumerated(EnumType.STRING)
+    /* It's highly recommended to avoid @Enumerated(EnumType.STRING) annotation,
+     because it hides the @Convert and the data truncate occurs!!! */
+
     @Column(name = "rating", columnDefinition = "ENUM")
+    @Convert(converter = RatingConverter.class)
     @ColumnDefault("G")
     private Rating rating;
 
@@ -109,5 +113,4 @@ public class Film {
         else
             specialFeaturesStr = String.join(",", specialFeatures);
     }
-
 }
