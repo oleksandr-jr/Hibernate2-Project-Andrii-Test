@@ -4,8 +4,8 @@ import org.anch.entity.Category;
 
 import java.util.Set;
 
-public interface CategoryDao extends CrudDao<Byte, Category> {
+public interface CategoryDao extends CrudDao<Integer, Category> {
 
-    Set<Category> findAllCategoriesByIds(Set<Byte> categoryIds);
+    Set<Category> findAllCategoriesByIds(Set<Integer> categoryIds);
 
 }

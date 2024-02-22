@@ -18,14 +18,14 @@ public class FilmRegistration {
     private String title;
     private String description;
     private Year releaseYear;
-    private Byte languageId;
-    private Byte rentalDuration;
+    private Integer languageId;
+    private Integer rentalDuration;
     private Double rentalRate;
-    private Short length;
+    private Integer length;
     private Double replacementCost;
     private Rating rating;
     private String specialFeatures;
-    private Set<Byte> categoriesId;
-    private Set<Short> actorsId;
+    private Set<Integer> categoriesId;
+    private Set<Integer> actorsId;
 
 }

@@ -20,7 +20,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Byte id;
+    private Integer id;
 
     @Column(name = "name", nullable = false, length = 25)
     private String name;

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Builder(setterPrefix = "with")
 public class FilmRental {
 
-    private short filmId;
-    private short customerId;
-    private byte staffId;
-    private double amount;
+    private Integer filmId;
+    private Integer customerId;
+    private Integer staffId;
+    private Double amount;
 
 }

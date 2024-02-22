@@ -14,8 +14,8 @@ public class CustomerRegistration {
     private String firstName;
     private String lastName;
     private String email;
-    public Short addressId;
-    public Byte storeId;
+    public Integer addressId;
+    public Integer storeId;
     private Boolean isActive;
 
 }

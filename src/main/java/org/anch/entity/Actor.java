@@ -15,13 +15,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Builder (setterPrefix = "with")
+@Builder(setterPrefix = "with")
 public class Actor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "actor_id")
-    private Short id;
+    private Integer id;
 
     @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;

@@ -52,9 +52,9 @@ public class FrontController {
         viewProvider.printMessage("Enter Customer email: ");
         String email = viewProvider.readString();
         viewProvider.printMessage("Enter Customer Address Id: ");
-        short addressId = viewProvider.readShort();
+        int addressId = viewProvider.readInt();
         viewProvider.printMessage("Enter Store Id: ");
-        byte storeId = viewProvider.readByte();
+        Integer storeId = (int) viewProvider.readByte();
         viewProvider.printMessage("Enter Customer Active Status (true or false): ");
         boolean isActive = viewProvider.readBoolean();
         CustomerRegistration customerRegistration = CustomerRegistration.builder()
@@ -76,11 +76,11 @@ public class FrontController {
 
     private void rentNewFilm() {
         viewProvider.printMessage("Enter Film Id: ");
-        short filmId = viewProvider.readShort();
+        int filmId = viewProvider.readInt();
         viewProvider.printMessage("Enter Customer Id: ");
-        short customerId = viewProvider.readShort();
+        int customerId = viewProvider.readInt();
         viewProvider.printMessage("Enter Staff Id: ");
-        byte staffId = viewProvider.readByte();
+        int staffId = viewProvider.readByte();
         viewProvider.printMessage("Enter cost amount: ");
         double amount = viewProvider.readDouble();
         FilmRental filmRental = FilmRental.builder()
@@ -106,21 +106,21 @@ public class FrontController {
         viewProvider.printMessage("Enter Release Year in the format \"1999\" : ");
         Year releaseYear = Year.of(viewProvider.readInt());
         viewProvider.printMessage("Enter Language Id: ");
-        byte languageId = viewProvider.readByte();
+        int languageId = viewProvider.readInt();
         viewProvider.printMessage("Enter Rental Duration : ");
-        byte rentalDuration = viewProvider.readByte();
+        int rentalDuration = viewProvider.readInt();
         viewProvider.printMessage("Enter rentalRate: ");
         double rentalRate = viewProvider.readDouble();
         viewProvider.printMessage("Enter Film Length: ");
-        short length = viewProvider.readShort();
+        int length = viewProvider.readInt();
         viewProvider.printMessage("Enter replacement cost: ");
         double replacementCost = viewProvider.readDouble();
         viewProvider.printMessage("Choose rating 'G', 'PG', 'PG-13', 'R', 'NC-17': ");
         Rating rating = Rating.valueOfLabel(viewProvider.readString());
         viewProvider.printMessage("Add special features 'Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes': ");
         String specialFeatures = viewProvider.readString();
-        Set<Byte> categoriesId = addCategoriesToFilm();
-        Set<Short> actorsId = addActorsToFilm();
+        Set<Integer> categoriesId = addCategoriesToFilm();
+        Set<Integer> actorsId = addActorsToFilm();
         FilmRegistration filmRegistration = FilmRegistration.builder()
                 .withTitle(title)
                 .withDescription(description)
@@ -138,11 +138,11 @@ public class FrontController {
         applicationService.addNewFilmToInventories(filmRegistration);
     }
 
-    private Set<Short> addActorsToFilm() {
-        Set<Short> actorsId = new HashSet<>();
+    private Set<Integer> addActorsToFilm() {
+        Set<Integer> actorsId = new HashSet<>();
         viewProvider.printMessage(ACTOR_ADDING);
         while (true) {
-            short actorId = viewProvider.readShort();
+            int actorId = viewProvider.readInt();
             if (actorId == 0) {
                 break;
             } else {
@@ -152,11 +152,11 @@ public class FrontController {
         return actorsId;
     }
 
-    private Set<Byte> addCategoriesToFilm() {
-        Set<Byte> categoriesId = new HashSet<>();
+    private Set<Integer> addCategoriesToFilm() {
+        Set<Integer> categoriesId = new HashSet<>();
         viewProvider.printMessage(CATEGORY_ADDING);
         while (true) {
-            byte categoryId = viewProvider.readByte();
+            int categoryId = (int) viewProvider.readInt();
             if (categoryId == 0) {
                 break;
             } else {

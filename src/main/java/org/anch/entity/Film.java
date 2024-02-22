@@ -26,7 +26,7 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
-    private Short id;
+    private Integer id;
 
     @Column(name = "title", nullable = false, length = 128)
     private String title;
@@ -46,14 +46,14 @@ public class Film {
     private Byte originalLanguage;
 
     @Column(name = "rental_duration", nullable = false, columnDefinition = "tinyint default '3'")
-    private Byte rentalDuration;
+    private Integer rentalDuration;
 
     @Column(name = "rental_rate", nullable = false, columnDefinition = "decimal(4,2) default 4.99")
     @Type(type = "org.hibernate.type.DoubleType")
     private Double rentalRate;
 
     @Column(name = "length")
-    private Short length;
+    private Integer length;
 
     @Column(name = "replacement_cost", nullable = false, columnDefinition = "decimal(5,2) default 19.99")
     @Type(type = "org.hibernate.type.DoubleType")
@@ -62,12 +62,11 @@ public class Film {
     /* It's highly recommended to avoid @Enumerated(EnumType.STRING) annotation,
      because it hides the @Convert and the data truncate occurs!!! */
 
-    @Column(name = "rating", columnDefinition = "ENUM")
+    @Column(name = "rating", nullable = false, length = 5, columnDefinition = "enum('G','PG','PG-13','R','NC-17') default 'G'")
     @Convert(converter = RatingConverter.class)
-    @ColumnDefault("G")
     private Rating rating;
 
-    @Column(name = "special_features", columnDefinition = "SET")
+    @Column(name = "special_features")
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     private String specialFeaturesStr;
