@@ -11,6 +11,6 @@ public interface ApplicationService {
 
     Boolean rentNewFilm(FilmRental filmRental);
 
-    void addNewFilmToInventories(FilmRegistration filmRegistration);
+    Integer addNewFilmToInventories(FilmRegistration filmRegistration);
 
 }

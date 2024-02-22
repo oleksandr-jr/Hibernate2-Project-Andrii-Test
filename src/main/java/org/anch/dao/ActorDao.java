@@ -4,8 +4,8 @@ import org.anch.entity.Actor;
 
 import java.util.Set;
 
-public interface ActorDao extends CrudDao<Short, Actor> {
+public interface ActorDao extends CrudDao<Integer, Actor> {
 
-    Set<Actor> findAllActorsByIds(Set<Short> ActorsId);
+    Set<Actor> findAllActorsByIds(Set<Integer> ActorsId);
 
 }

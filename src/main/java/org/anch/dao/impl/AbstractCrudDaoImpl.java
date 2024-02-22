@@ -9,6 +9,7 @@ import org.anch.dao.CrudDao;
 import org.anch.dao.exception.NoElementPresentException;
 import org.anch.entity.Address;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public abstract class AbstractCrudDaoImpl<ID, E> implements CrudDao<ID, E> {
 
     private final Class<E> clazz;
+    private final SessionFactory sessionFactory;
 
     @Override
     public ID save(E entity) {
@@ -35,7 +37,7 @@ public abstract class AbstractCrudDaoImpl<ID, E> implements CrudDao<ID, E> {
     @Override
     public Optional<E> findById(ID id) {
         E entity = null;
-        try (Session session = SessionFactoryCreator.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             entity = (E) session.get(clazz, (Serializable) id);
         } catch (NoResultException e) {
             throw new NoElementPresentException(clazz.getName() + " is absent in the table", e);
@@ -69,6 +71,6 @@ public abstract class AbstractCrudDaoImpl<ID, E> implements CrudDao<ID, E> {
     }
 
     protected Session getCurrentSession() {
-        return SessionFactoryCreator.getSessionFactory().openSession();
+        return sessionFactory.openSession();
     }
 }

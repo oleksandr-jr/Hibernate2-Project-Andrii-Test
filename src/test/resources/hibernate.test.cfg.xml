@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- JDBC Database connection settings -->
+    <property name="connection.driver_class">org.h2.Driver</property>
+<!--    <property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>-->
+
+    <property name="connection.url">jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE;INIT=CREATE SCHEMA IF NOT EXISTS movie \; CREATE DOMAIN IF NOT EXISTS enum as VARCHAR(255) \; CREATE DOMAIN IF NOT EXISTS "set" as VARCHAR(255)\;</property>
+<!--    <property name="connection.url">jdbc:hsqldb:mem:myDb</property>-->
+
+
+    <property name="connection.username">sa</property>
+    <property name="connection.password">sa</property>
+    <!-- JDBC connection pool settings ... using built-in test pool -->
+    <property name="connection.autocommit">true</property>
+    <property name="connection.pool_size">1</property>
+    <!-- Select our SQL dialect -->
+    <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+<!--    <property name="dialect">org.hibernate.dialect.HSQLDialect</property>-->
+<!--    <property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
+    <!-- Echo the SQL to stdout -->
+    <property name="show_sql">true</property>
+    <!-- Set the current session context -->
+    <property name="current_session_context_class">thread</property>
+
+    <!-- dbcp connection pool configuration -->
+    <property name="hibernate.dbcp.initialSize">5</property>
+    <property name="hibernate.dbcp.maxTotal">20</property>
+    <property name="hibernate.dbcp.maxIdle">10</property>
+    <property name="hibernate.dbcp.minIdle">5</property>
+    <property name="hibernate.dbcp.maxWaitMillis">-1</property>
+
+    <property name="auto_quote_keyword">true</property>
+
+    <!--    Drop and re-create the database schema on startup-->
+    <property name="hbm2ddl.auto">create-drop</property>
+<!--    <property name="hbm2ddl.import_files">import.sql</property>-->
+
+  </session-factory>
+</hibernate-configuration>

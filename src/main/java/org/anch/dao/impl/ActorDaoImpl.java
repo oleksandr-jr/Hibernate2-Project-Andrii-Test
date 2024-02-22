@@ -4,23 +4,24 @@ import org.anch.dao.ActorDao;
 import org.anch.entity.Actor;
 import org.anch.entity.Inventory;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ActorDaoImpl extends AbstractCrudDaoImpl<Short, Actor> implements ActorDao {
+public class ActorDaoImpl extends AbstractCrudDaoImpl<Integer, Actor> implements ActorDao {
 
     private static final String FIND_ALL_ACTORS_BY_IDS_QUERY =
             "from Actor where id in (:actorIds)";
 
-    public ActorDaoImpl() {
-        super(Actor.class);
+    public ActorDaoImpl(SessionFactory sessionFactory) {
+        super(Actor.class, sessionFactory);
     }
 
     @Override
-    public Set<Actor> findAllActorsByIds(Set<Short> actorIds) {
+    public Set<Actor> findAllActorsByIds(Set<Integer> actorIds) {
 
         Set<Actor> actors;
         try (Session session = getCurrentSession()) {

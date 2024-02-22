@@ -16,7 +16,7 @@ public class FilmText {
 
     @Id
     @Column(name = "film_id")
-    private Short id;
+    private Integer id;
 
     @Column(name = "title", nullable = false, length = 255)
     private String firstName;

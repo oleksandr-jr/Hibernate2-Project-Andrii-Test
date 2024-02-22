@@ -20,8 +20,8 @@ public class ViewProvider {
         return Byte.parseByte(scanner.nextLine());
     }
 
-    public short readShort() {
-        return Short.parseShort(scanner.nextLine());
+    public int readShort() {
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public int readInt() {

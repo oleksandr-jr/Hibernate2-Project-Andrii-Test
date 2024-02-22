@@ -4,6 +4,6 @@ import org.anch.entity.Address;
 
 import java.util.Optional;
 
-public interface AddressDao extends CrudDao<Short, Address> {
+public interface AddressDao extends CrudDao<Integer, Address> {
 
 }

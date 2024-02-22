@@ -59,7 +59,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         Customer customer = customerDao.findById(filmRental.getCustomerId()).get();
         Staff staff = staffDao.findById(filmRental.getStaffId()).get();
 
-        Byte storeId = customer.getStore().getId();
+        Integer storeId = customer.getStore().getId();
         List<Inventory> inventories = inventoryDao.findAllInventoriesByFilmId(filmRental.getFilmId(), storeId);
 
         List<Inventory> rentalInventories = inventories
@@ -103,7 +103,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Transactional
     @Override
-    public void addNewFilmToInventories(FilmRegistration filmRegistration) {
+    public Integer addNewFilmToInventories(FilmRegistration filmRegistration) {
 
         Language language = languageDao.findById(filmRegistration.getLanguageId()).get();
 
@@ -126,7 +126,9 @@ public class ApplicationServiceImpl implements ApplicationService {
                 .withCategories(categories)
                 .build();
 
-        Short filmId = filmDao.save(film);
+        Integer filmId = filmDao.save(film);
+
+        return filmId;
 
     }
 
